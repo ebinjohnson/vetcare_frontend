@@ -19,7 +19,7 @@ const Cart = () => {
     const data = {
       userId: userId,
     };
-    let response = await axios.post("http://localhost:5000/getcartitems", data);
+    let response = await axios.post("https://vetcarebackend.herokuapp.com/getcartitems", data);
     if (response.status === 200) {
       setCartitems(response.data.cart);
     }
@@ -32,7 +32,7 @@ const Cart = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/addquantity",
+        "https://vetcarebackend.herokuapp.com/addquantity",
         data
       );
       if (response.status === 200) {
@@ -52,7 +52,7 @@ const Cart = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/removequantity",
+        "https://vetcarebackend.herokuapp.com/removequantity",
         data
       );
       if (response.status === 200) {
@@ -71,7 +71,7 @@ const Cart = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/removefromcart",
+        "https://vetcarebackend.herokuapp.com/removefromcart",
         data
       );
       if (response.status === 200) {
@@ -89,7 +89,7 @@ const Cart = () => {
       const data = {
         cartId: cartArray[i],
       };
-      let response = await axios.post("http://localhost:5000/emptycart", data);
+      let response = await axios.post("https://vetcarebackend.herokuapp.com/emptycart", data);
       if (response.status === 200) {
         for (let i = 0; i < productArray.length; i++) {
           const newdata = {
@@ -98,7 +98,7 @@ const Cart = () => {
             stock: stock[i],
           };
           let stockm = await axios.post(
-            "http://localhost:5000/updatestock",
+            "https://vetcarebackend.herokuapp.com/updatestock",
             newdata
           );
           if (stockm.status == 200) {

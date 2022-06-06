@@ -17,7 +17,7 @@ function Email() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/otpAuthentication",
+        "https://vetcarebackend.herokuapp.com/otpAuthentication",
         data
       );
       if (response.status === 200) {

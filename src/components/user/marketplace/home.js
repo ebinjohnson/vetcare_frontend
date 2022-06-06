@@ -11,13 +11,13 @@ const Home = () => {
   const [search, setSearch] = useState([]);
   const [category, setCategory] = useState([]);
   // async function getProducts() {
-  //   let response = await axios.get("http://localhost:5000/getuserproducts");
+  //   let response = await axios.get("https://vetcarebackend.herokuapp.com/getuserproducts");
   //   if (response.status === 200) {
   //     setProducts(response.data.products);
   //   }
   // }
   async function getCategory() {
-    let response = await axios.get("http://localhost:5000/getcategory");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getcategory");
     if (response.status === 200) {
       setCategory(response.data.categories);
     }
@@ -27,7 +27,7 @@ const Home = () => {
     const data = {
       catName: catName,
     };
-    let response = await axios.post("http://localhost:5000/sortcategory", data);
+    let response = await axios.post("https://vetcarebackend.herokuapp.com/sortcategory", data);
     if (response.status === 200) {
       setProducts(response.data.products);
     }
@@ -38,14 +38,14 @@ const Home = () => {
     };
     if (search.length != 0) {
       let response = await axios.post(
-        "http://localhost:5000/searchproducts",
+        "https://vetcarebackend.herokuapp.com/searchproducts",
         data
       );
       if (response.status === 200) {
         setProducts(response.data.products);
       }
     } else {
-      let response = await axios.get("http://localhost:5000/getuserproducts");
+      let response = await axios.get("https://vetcarebackend.herokuapp.com/getuserproducts");
       if (response.status === 200) {
         setProducts(response.data.products);
       }

@@ -38,7 +38,7 @@ function ManageProducts() {
     console.log(name);
     try {
       const response = await axios.post(
-        "http://localhost:5000/addcategory",
+        "https://vetcarebackend.herokuapp.com/addcategory",
         name
       );
       if (response.status === 200) {
@@ -52,13 +52,13 @@ function ManageProducts() {
     }
   };
   async function getCategory() {
-    let response = await axios.get("http://localhost:5000/getcategory");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getcategory");
     if (response.status === 200) {
       setCategory(response.data.categories);
     }
   }
   async function getProducts() {
-    let response = await axios.get("http://localhost:5000/getproducts");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getproducts");
     if (response.status === 200) {
       setProductDetails(response.data.products);
     }
@@ -90,7 +90,7 @@ function ManageProducts() {
       }
 
       axios
-        .post("http://localhost:5000/addproduct", formData, {
+        .post("https://vetcarebackend.herokuapp.com/addproduct", formData, {
           headers: {
             "content-type": "multipart/form-data", // do not forget this
           },
@@ -100,7 +100,7 @@ function ManageProducts() {
         });
       // const response = await axios({
       //   method: "post",
-      //   url: "http://localhost:5000/addproduct",
+      //   url: "https://vetcarebackend.herokuapp.com/addproduct",
       //   data: { name: "dssd" },
       //   headers: { "Content-Type": "multipart/form-data" },
       // });
@@ -124,7 +124,7 @@ function ManageProducts() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:5000/removeproducts",
+        "https://vetcarebackend.herokuapp.com/removeproducts",
         data
       );
       if (response.status === 200) {

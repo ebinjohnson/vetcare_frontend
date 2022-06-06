@@ -45,7 +45,7 @@ const HospitalHome = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:5000/vaccinelist",
+        "https://vetcarebackend.herokuapp.com/vaccinelist",
         data
       );
       if (response.status === 200) {

@@ -15,7 +15,7 @@ const Viewappointment = () => {
       id: id,
     };
     let response = await axios.post(
-      "http://localhost:5000/getActiveappointment",
+      "https://vetcarebackend.herokuapp.com/getActiveappointment",
       data
     );
     if (response.status === 200) {
@@ -27,7 +27,7 @@ const Viewappointment = () => {
       appointmentID: id,
     };
     let response = axios
-      .post("http://localhost:5000/cancelappointment", data)
+      .post("https://vetcarebackend.herokuapp.com/cancelappointment", data)
       .then(() => {
         window.location.reload(false);
       })

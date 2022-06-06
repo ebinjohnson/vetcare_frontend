@@ -16,7 +16,7 @@ const ViewComplaintStatus = () => {
       id: id,
     };
     let response = await axios.post(
-      "http://localhost:5000/getcomplaintstatus",
+      "https://vetcarebackend.herokuapp.com/getcomplaintstatus",
       data
     );
     if (response.status === 200) {

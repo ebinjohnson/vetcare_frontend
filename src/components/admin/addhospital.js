@@ -52,7 +52,7 @@ const Addhospital = () => {
     ) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/addhospital",
+          "https://vetcarebackend.herokuapp.com/addhospital",
           data
         );
         if (response.status === 200) {

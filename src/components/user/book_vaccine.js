@@ -18,7 +18,7 @@ const Vaccine = () => {
   }
 
   async function getVaccineList() {
-    let response = await axios.get("http://localhost:5000/getvaccinelist");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getvaccinelist");
     if (response.status === 200) {
       setVaccineList(response.data.appointments);
     }

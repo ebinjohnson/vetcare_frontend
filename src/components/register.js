@@ -40,7 +40,7 @@ const Register = () => {
       if (pass === cnpass) {
         try {
           const response = await axios.post(
-            "http://localhost:5000/register",
+            "https://vetcarebackend.herokuapp.com/register",
             data
           );
           if (response.status === 200) {

@@ -10,7 +10,7 @@ function ComplaintView() {
   const [complaintsView, setComplaintsView] = useState(null);
 
   async function getComplaints() {
-    let response = await axios.get("http://localhost:5000/getcomplaints");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getcomplaints");
     if (response.status === 200) {
       setComplaintsView(response.data.complaints);
     }

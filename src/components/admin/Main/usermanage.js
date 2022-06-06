@@ -8,7 +8,7 @@ function UserMain() {
   const [userdetails, setUserDetails] = useState([]);
 
   async function getUserDetails() {
-    let response = await axios.get("http://localhost:5000/getusers");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/getusers");
     if (response.status === 200) {
       setUserDetails(response.data.userdetails);
     }
@@ -19,7 +19,7 @@ function UserMain() {
       userID: id,
     };
     let response = axios
-      .post("http://localhost:5000/deleteUser", data)
+      .post("https://vetcarebackend.herokuapp.com/deleteUser", data)
       .then(() => {
         window.location.reload(false);
       })
@@ -32,7 +32,7 @@ function UserMain() {
       userID: id,
     };
     let response = axios
-      .post("http://localhost:5000/activateUser", data)
+      .post("https://vetcarebackend.herokuapp.com/activateUser", data)
       .then(() => {
         window.location.reload(false);
       })

@@ -21,7 +21,7 @@ const EditHospital = () => {
     };
 
     let response = await axios.post(
-      "http://localhost:5000/getHospitalById",
+      "https://vetcarebackend.herokuapp.com/getHospitalById",
       data
     );
     if (response.status === 200) {
@@ -51,7 +51,7 @@ const EditHospital = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/updatehospital",
+        "https://vetcarebackend.herokuapp.com/updatehospital",
         data
       );
       if (response.status === 200) {

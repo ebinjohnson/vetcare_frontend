@@ -16,7 +16,7 @@ const Itemcard = (props) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:5000/addtocart",
+        "https://vetcarebackend.herokuapp.com/addtocart",
         data
       );
       if (response.status === 200) {

@@ -30,7 +30,7 @@ const Userprofile = () => {
 
       try {
         const response = await axios.post(
-          "http://localhost:5000/changepassword",
+          "https://vetcarebackend.herokuapp.com/changepassword",
           data
         );
         if (response.status === 200) {

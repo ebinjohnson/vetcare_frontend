@@ -13,7 +13,7 @@ function Appointment() {
   const [hospitals, setHospitals] = useState([]);
 
   async function getHospitals() {
-    let response = await axios.get("http://localhost:5000/gethospital");
+    let response = await axios.get("https://vetcarebackend.herokuapp.com/gethospital");
     if (response.status === 200) {
       setHospitals(response.data.hospitals);
     }
@@ -72,7 +72,7 @@ function Appointment() {
     ) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/appointments",
+          "https://vetcarebackend.herokuapp.com/appointments",
           data
         );
         if (response.status === 200) {

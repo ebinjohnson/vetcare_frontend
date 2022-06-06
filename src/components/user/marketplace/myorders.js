@@ -17,7 +17,7 @@ const Myorders = () => {
     const data = {
       userId: userId,
     };
-    let response = await axios.post("http://localhost:5000/getcartitems", data);
+    let response = await axios.post("https://vetcarebackend.herokuapp.com/getcartitems", data);
     if (response.status === 200) {
       setOrderitems(response.data.cart);
     }
@@ -29,7 +29,7 @@ const Myorders = () => {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:5000/cancelorder",
+        "https://vetcarebackend.herokuapp.com/cancelorder",
         data
       );
       if (response.status === 200) {
