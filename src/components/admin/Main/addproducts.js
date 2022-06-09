@@ -76,12 +76,10 @@ function ManageProducts() {
       quantity: quantity,
     };
 
-    const response = await axios({
-      method: "post",
-      url: "https://vetcarebackend.herokuapp.com/addproduct",
-      data: data,
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const response = await axios.post(
+      "https://vetcarebackend.herokuapp.com/addproduct",
+      data
+    );
     if (response.status === 200) {
       console.log("Sucessfull");
       handleClose();
