@@ -10,6 +10,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
   const [category, setCategory] = useState([]);
+  const username = window.localStorage.getItem("username");
   // async function getProducts() {
   //   let response = await axios.get("https://vetcarebackend.herokuapp.com/getuserproducts");
   //   if (response.status === 200) {
@@ -55,6 +56,11 @@ const Home = () => {
   useEffect(() => {
     getProducts();
     getCategory();
+    useEffect(() => {
+      if (username == null) {
+        history.push("/login");
+      }
+    }, []);
   }, []);
   return (
     <div>

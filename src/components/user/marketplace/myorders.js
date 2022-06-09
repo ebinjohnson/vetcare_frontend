@@ -17,7 +17,10 @@ const Myorders = () => {
     const data = {
       userId: userId,
     };
-    let response = await axios.post("https://vetcarebackend.herokuapp.com/getcartitems", data);
+    let response = await axios.post(
+      "https://vetcarebackend.herokuapp.com/getcartitems",
+      data
+    );
     if (response.status === 200) {
       setOrderitems(response.data.cart);
     }
@@ -52,20 +55,23 @@ const Myorders = () => {
     let noofunits = Number(quantity);
     var amount = unitprice * noofunits;
     var doc = new jsPDF("landscape", "px", "a4", "false");
-    doc.addImage(logo, "PNG", 20, 20, 60, 60);
-    doc.text(150, 125, "Bill Generation");
+    doc.addImage(logo, "PNG", 40, 40, 80, 80);
+    doc.text(150, 125, "Invoice");
     doc.text(120, 145, "Name : " + userName);
     doc.text(120, 165, "Product Name : " + productName);
     doc.text(120, 185, "Product Quantity : " + quantity);
     doc.text(120, 205, "Product Price : " + productPrice);
     doc.text(120, 225, "Amount : " + String(amount));
     doc.text(120, 245, "Date : " + orderDate);
-    doc.text(120, 265, "Paid");
-    doc.save("bill.pdf");
+    doc.text(120, 265, "Payment Done");
+    doc.save("invoice.pdf");
     history.push("/myorders");
   }
   useEffect(() => {
     getOrderitems();
+    if (userI == null) {
+      history.push("/login");
+    }
   }, []);
   return (
     <div>

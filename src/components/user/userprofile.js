@@ -48,7 +48,11 @@ const Userprofile = () => {
 
     handleClose();
   }
-
+  useEffect(() => {
+    if (username == null) {
+      history.push("/login");
+    }
+  }, []);
   return (
     <div className="container rounded bg-white mt-5">
       <div className="row">

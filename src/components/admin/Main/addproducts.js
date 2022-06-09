@@ -52,71 +52,48 @@ function ManageProducts() {
     }
   };
   async function getCategory() {
-    let response = await axios.get("https://vetcarebackend.herokuapp.com/getcategory");
+    let response = await axios.get(
+      "https://vetcarebackend.herokuapp.com/getcategory"
+    );
     if (response.status === 200) {
       setCategory(response.data.categories);
     }
   }
   async function getProducts() {
-    let response = await axios.get("https://vetcarebackend.herokuapp.com/getproducts");
+    let response = await axios.get(
+      "https://vetcarebackend.herokuapp.com/getproducts"
+    );
     if (response.status === 200) {
       setProductDetails(response.data.products);
     }
   }
   const handleCreateProduct = async (e) => {
-    e.preventDefault();
-    var formData = new FormData();
-    // const data = {
-    //   name: name,
-    //   ctname: ctname,
-    //   price: price,
-    //   desc: desc,
-    //   quantity: quantity,
-    // };
-    // for (const key of Object.keys(imagelink)) {
-    //   formData.append("imagelink", imagelink[key]);
-    // }
-    formData.append("ctname", ctname);
-    formData.append("name", name);
-    formData.append("price", price);
-    formData.append("desc", desc);
-    formData.append("quantity", quantity);
-    formData.append("file", file);
-    formData.append("filename", filename);
+    const data = {
+      name: name,
+      ctname: ctname,
+      price: price,
+      desc: desc,
+      quantity: quantity,
+    };
 
-    try {
-      for (var value of formData.values()) {
-        console.log(value);
-      }
-
-      axios
-        .post("https://vetcarebackend.herokuapp.com/addproduct", formData, {
-          headers: {
-            "content-type": "multipart/form-data", // do not forget this
-          },
-        })
-        .then((res) => {
-          console.log(res);
-        });
-      // const response = await axios({
-      //   method: "post",
-      //   url: "https://vetcarebackend.herokuapp.com/addproduct",
-      //   data: { name: "dssd" },
-      //   headers: { "Content-Type": "multipart/form-data" },
-      // });
-      // if (response.status === 200) {
-      //   console.log("Sucessfull");
-      // } else {
-      //   console.log("Failed");
-      // }
-    } catch (e) {
-      console.log("Error");
+    const response = await axios({
+      method: "post",
+      url: "https://vetcarebackend.herokuapp.com/addproduct",
+      data: data,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    if (response.status === 200) {
+      console.log("Sucessfull");
+      handleClose();
+      handleNewClose();
+      getProducts();
+    } else {
+      console.log("Failed");
     }
-
-    // handleClose();
-    // handleNewClose();
-    // getProducts();
   };
+  // handleClose();
+  // handleNewClose();
+  // getProducts();
 
   async function deleteProduct(id) {
     const data = {
@@ -266,17 +243,6 @@ function ManageProducts() {
                 required
               />
               <br />
-
-              <Form.Control
-                type="file"
-                title="Choose a image please"
-                id="files"
-                onChange={(e) => {
-                  setfile(e.target.files[0]);
-                  setFileName(e.target.files[0].name);
-                }}
-                required
-              />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" onClick={handleCreateProduct}>

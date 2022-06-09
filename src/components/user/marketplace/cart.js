@@ -14,12 +14,16 @@ const Cart = () => {
   let productArray = [];
   let oldquantity = [];
   let userId = window.localStorage.getItem("id");
+  const username = window.localStorage.getItem("username");
   const [cartitems, setCartitems] = useState([]);
   async function getcartitems() {
     const data = {
       userId: userId,
     };
-    let response = await axios.post("https://vetcarebackend.herokuapp.com/getcartitems", data);
+    let response = await axios.post(
+      "https://vetcarebackend.herokuapp.com/getcartitems",
+      data
+    );
     if (response.status === 200) {
       setCartitems(response.data.cart);
     }
@@ -89,7 +93,10 @@ const Cart = () => {
       const data = {
         cartId: cartArray[i],
       };
-      let response = await axios.post("https://vetcarebackend.herokuapp.com/emptycart", data);
+      let response = await axios.post(
+        "https://vetcarebackend.herokuapp.com/emptycart",
+        data
+      );
       if (response.status === 200) {
         for (let i = 0; i < productArray.length; i++) {
           const newdata = {
@@ -112,6 +119,9 @@ const Cart = () => {
   console.log(cartArray);
   useEffect(() => {
     getcartitems();
+    if (username == null) {
+      history.push("/login");
+    }
   }, []);
   return (
     <div>
