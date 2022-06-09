@@ -5,6 +5,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 const axios = require("axios");
 const Userprofile = () => {
+  let history = useHistory();
   const username = window.localStorage.getItem("username");
   const userEmail = window.localStorage.getItem("useremail");
   const userPhone = window.localStorage.getItem("userphone");

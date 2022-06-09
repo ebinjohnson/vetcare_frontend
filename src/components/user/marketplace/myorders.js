@@ -69,7 +69,7 @@ const Myorders = () => {
   }
   useEffect(() => {
     getOrderitems();
-    if (userI == null) {
+    if (userId == null) {
       history.push("/login");
     }
   }, []);
