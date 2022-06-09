@@ -7,6 +7,7 @@ import data from "./data";
 import "./viewstyle.css";
 const axios = require("axios");
 const Home = () => {
+  let history = useHistory();
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState([]);
   const [category, setCategory] = useState([]);
@@ -18,7 +19,9 @@ const Home = () => {
   //   }
   // }
   async function getCategory() {
-    let response = await axios.get("https://vetcarebackend.herokuapp.com/getcategory");
+    let response = await axios.get(
+      "https://vetcarebackend.herokuapp.com/getcategory"
+    );
     if (response.status === 200) {
       setCategory(response.data.categories);
     }
@@ -28,7 +31,10 @@ const Home = () => {
     const data = {
       catName: catName,
     };
-    let response = await axios.post("https://vetcarebackend.herokuapp.com/sortcategory", data);
+    let response = await axios.post(
+      "https://vetcarebackend.herokuapp.com/sortcategory",
+      data
+    );
     if (response.status === 200) {
       setProducts(response.data.products);
     }
@@ -46,7 +52,9 @@ const Home = () => {
         setProducts(response.data.products);
       }
     } else {
-      let response = await axios.get("https://vetcarebackend.herokuapp.com/getuserproducts");
+      let response = await axios.get(
+        "https://vetcarebackend.herokuapp.com/getuserproducts"
+      );
       if (response.status === 200) {
         setProducts(response.data.products);
       }
@@ -56,11 +64,9 @@ const Home = () => {
   useEffect(() => {
     getProducts();
     getCategory();
-    useEffect(() => {
-      if (username == null) {
-        history.push("/login");
-      }
-    }, []);
+    if (username == null) {
+      history.push("/login");
+    }
   }, []);
   return (
     <div>
